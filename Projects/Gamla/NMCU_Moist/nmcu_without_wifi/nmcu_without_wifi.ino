@@ -9,8 +9,7 @@
 #include <math.h>
 
 char auth[] = "cbdbb8e5d10a4d2e821a0e24ae4f08b3";
-//char ssid[] = "S-404";
-char ssid[] = "Vishwa JioFi";
+char ssid[] = "S-404";
 char pass[] = "123456789a";
 
 
@@ -19,19 +18,10 @@ int sensorValue = 0;  // variable to store the value coming from the sensor
 int buzzer = D2;
 int MoistValue;
 
-
-BLYNK_WRITE(V1)
-{
-  int pinValue = param.asInt(); // assigning incoming value from pin V1 to a variable
-  pinValue=1023-pinValue;
-  // process received value
-}
-
 void setup() {
 
   Serial.begin(9600); // Starts the serial communication
   pinMode(buzzer, OUTPUT);
-  Blynk.begin(auth, ssid, pass);
 }
 
 void loop() {
@@ -54,6 +44,5 @@ void loop() {
     digitalWrite(buzzer, LOW);
     Serial.print("  Buzzer OFF - ");
   }
-  Blynk.run();
 
 }
